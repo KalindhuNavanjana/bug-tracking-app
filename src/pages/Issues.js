@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Issue from "../components/issue";
 import useAxios from "../hooks/useAxios";
-import Spinner from "../components/spinner";
+import Spinner from "../components/Spinner";
 
 const Issues = () => {
     const { loading, error, makeRequest } = useAxios();
@@ -13,7 +13,7 @@ const Issues = () => {
             console.log(data);
             setIssues(data);
         });
-    }, []);
+    }, [makeRequest]);
     return (
         <div className='issues-page page'>
             <div className='title'>

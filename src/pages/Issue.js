@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
-import Spinner from "../components/spinner";
+import Spinner from "../components/Spinner";
 
 const Issue = () => {
     const IssueId = useParams().id;
@@ -19,7 +19,7 @@ const Issue = () => {
             console.log(data);
             setIssue(data);
         });
-    }, []);
+    }, [IssueId, makeRequest]);
 
     const startProgress = () => {
         makeRequest("patch", `/issues/${IssueId}`, {
