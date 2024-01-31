@@ -63,6 +63,55 @@ body {
     }
 }
 
+.issue-page {
+    padding: 3rem 5rem;
+    justify-content: start;
+
+    .title {
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+
+        .issue-status {
+            margin: 0rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 10px;
+        }
+
+        .issue-type {
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 10px;
+        }
+    }
+
+    .content {
+        margin-top: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        .issue-description {
+            width: 95%;
+        }
+
+        .issue-actions {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-top: #ffffff50 1px solid;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            margin: 1rem 0rem;
+        }
+    }
+
+}
+
 .issue {
     margin-bottom: 2rem;
     padding: 1rem;

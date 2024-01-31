@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Issue from "../components/issue";
 import useAxios from "../hooks/useAxios";
+import Spinner from "../components/spinner";
 
 const Issues = () => {
     const { loading, error, makeRequest } = useAxios();
@@ -20,7 +21,9 @@ const Issues = () => {
                 <p>You can view the list of issues here</p>
             </div>
             <div className='content'>
-                {loading && <p>Loading...</p>}
+                {loading && (
+                    <Spinner/>
+                )}
                 {error && <p>{error.message}</p>}
                 {issues.map((issue) => (
                     <Issue key={issue.id} issue={issue} />
