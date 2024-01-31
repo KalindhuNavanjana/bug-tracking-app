@@ -54,6 +54,30 @@ body {
         text-align: center;
     }
 
+    .new-issue {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex-direction: column;
+        margin-bottom: 2rem;
+
+        .btn {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: azure;
+            box-shadow: 0px 0px 10px 0px #00000080;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: translateY(-2px);
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+
     .content {
         width: 100%;
         display: flex;
@@ -61,6 +85,86 @@ body {
         align-items: center;
         flex-direction: column;
     }
+}
+
+.new-issue-page{
+    padding: 3rem 5rem;
+    justify-content: start;
+
+    .title {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        form{
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form-group {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            .form-control {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .form-group-description {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            .form-control {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .form-group-actions {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            margin-bottom: 2rem;
+
+            .btn {
+                width: inherit;
+                font-weight: 700;
+                font-size: 1.1rem;
+                color: azure;
+                box-shadow: 0px 0px 10px 0px #00000080;
+                border-radius: 10px;
+                padding: 0.5rem 1rem;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    transform: translateY(-2px);
+                    transition: all 0.2s ease-in-out;
+                }
+            }
+        }
+    }
+
 }
 
 .issue-page {
@@ -110,7 +214,15 @@ body {
         }
     }
 
+    .issue-history {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
 }
+
 
 .issue {
     margin-bottom: 2rem;
@@ -122,6 +234,13 @@ body {
     justify-content: space-between;
     align-items: center;
     border: 1px solid #ffffff80;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: translateY(-2px);
+        transition: all 0.2s ease-in-out;
+    }
+    
 
     .issue-title {
         font-size: 1.5rem;
@@ -152,6 +271,45 @@ body {
 
         .btn {
             width: 40%;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: translateY(-2px);
+                transition: all 0.2s ease-in-out;
+            }
         }
+    }
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: #0088bd80;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #ffffff80;
+
+    .history-item-date {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0 1rem;
+        border-radius: 10px;
+    }
+
+    .history-item-user {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0 1rem;
+        border-radius: 10px;
+    }
+
+    .history-item-status {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0 1rem;
+        border-radius: 10px;
     }
 }

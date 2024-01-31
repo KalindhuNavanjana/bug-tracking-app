@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import Spinner from "../components/Spinner";
+import HistoryItem from "../components/HistoryItem";
 
 const Issue = () => {
     const IssueId = useParams().id;
@@ -13,20 +14,30 @@ const Issue = () => {
         status: "",
         type: "",
     });
+    const [issueHistory, setIssueHistory] = useState([]);
 
     useEffect(() => {
         makeRequest("get", `/issues/${IssueId}`).then((data) => {
             console.log(data);
             setIssue(data);
         });
-    }, [IssueId, makeRequest]);
+        // eslint-disable-next-line
+    }, [IssueId]);
+
+    useEffect(() => {
+        makeRequest("get", `/issues/${IssueId}/history`).then((data) => {
+            console.log(data);
+            setIssueHistory(data);
+        });
+        // eslint-disable-next-line
+    }, [IssueId,issue.status]);
 
     const startProgress = () => {
         makeRequest("patch", `/issues/${IssueId}`, {
             status: "In-Progress",
         }).then((data) => {
             console.log(data);
-            setIssue(data);
+            setIssue(data.updatedIssue);
         });
     };
 
@@ -35,7 +46,7 @@ const Issue = () => {
             status: "Waiting on client",
         }).then((data) => {
             console.log(data);
-            setIssue(data);
+            setIssue(data.updatedIssue);
         });
     };
 
@@ -44,7 +55,7 @@ const Issue = () => {
             status: "Resolved",
         }).then((data) => {
             console.log(data);
-            setIssue(data);
+            setIssue(data.updatedIssue);
         });
     };
 
@@ -96,34 +107,44 @@ const Issue = () => {
                 <p className='issue-description'>{issue.description}</p>
 
                 {loading ? (
-                    <Spinner/>
-                ):(
+                    <Spinner />
+                ) : (
                     <div className='issue-actions'>
-                    {(issue.status === "Open" ||
-                        issue.status === "Waiting on client") && (
-                        <button
-                            className='btn btn-warning'
-                            onClick={startProgress}
-                        >
-                            Start Progress
-                        </button>
-                    )}
-                    {issue.status === "In-Progress" && (
-                        <button
-                            className='btn btn-primary'
-                            onClick={requestClientResponse}
-                        >
-                            Request Client Response
-                        </button>
-                    )}
-                    {(issue.status === "In-Progress" ||
-                        issue.status === "Waiting on client") && (
-                        <button className='btn btn-success' onClick={resolve}>
-                            Resolve
-                        </button>
-                    )}
-                </div>
+                        {(issue.status === "Open" ||
+                            issue.status === "Waiting on client") && (
+                            <button
+                                className='btn btn-warning'
+                                onClick={startProgress}
+                            >
+                                Start Progress
+                            </button>
+                        )}
+                        {issue.status === "In-Progress" && (
+                            <button
+                                className='btn btn-primary'
+                                onClick={requestClientResponse}
+                            >
+                                Request Client Response
+                            </button>
+                        )}
+                        {(issue.status === "In-Progress" ||
+                            issue.status === "Waiting on client") && (
+                            <button
+                                className='btn btn-success'
+                                onClick={resolve}
+                            >
+                                Resolve
+                            </button>
+                        )}
+                    </div>
                 )}
+            </div>
+
+            <h3>Issue History</h3>
+            <div className='issue-history'>
+                {issueHistory.map((item) => (
+                    <HistoryItem key={item.id} item={item} />
+                ))}
             </div>
         </div>
     );
